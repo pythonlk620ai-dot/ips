@@ -7,11 +7,13 @@
 	<meta http-equiv="x-ua-compatible" content="IE=edge" />
 	<meta name="description" content="Img-PS is a free online image editor using HTML5 technology. No download or installation is required. Edit photos in your browser with filters, resizing, text, drawing tools, layers, and background removal." />
 	<meta name="keywords" content="Img-PS, Online PS, Online Photoshop, Free PS, Free Image Editor, Free Online Image Editor, Online Drawing, Photo Retouching, Background Removal, Image Processing, Filter Effects, Layer Editing, HTML5 Canvas, No Download, Web Version" />
+	<meta name="robots" content="index,follow" />
 	<meta name="author" content="Img-PS" />
 	<meta name="application-name" content="Img-PS" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes" />
 	<link rel="icon" sizes="192x192" href="images/favicon.png">
-
+	<!-- <link rel="manifest" href="dist/manifest.json"> -->
+	<!-- Google -->
 
 	<link rel="canonical" href="https://img-ps.com">
 	<meta itemprop="name" content="Free Online Image Editor (Web Version) | Img-PS" />
@@ -26,6 +28,16 @@
 	<meta property="og:url" content="https://img-ps.com" />
 	<meta property="og:description" content="Img-PS is a free online image editor using HTML5. No download required. Filters, layers, text, resizing, and more." />
 	<meta property="og:site_name" content="Img-PS" />
+
+	<script type="application/ld+json">
+		{
+		  "@context": "https://img-ps.com",
+		  "@type": "WebSite",
+		  "name": "Img-PS",
+		  "url": "https://img-ps.com",
+		  "description": "Free online image editor (web version) using HTML5. No download required."
+		}
+	</script>
 
 	<script src="dist/bundle.js" async></script>
 
@@ -58,8 +70,8 @@
 				<div class="canvas_wrapper" id="canvas_wrapper">
 					<div id="mouse"></div>
 					<div class="transparent-grid" id="canvas_minipaint_background"></div>
-					<canvas id="canvas_minipaint">
-						<div class="trn error">
+					<canvas id="canvas_minipaint" width="200" height="480">
+						<div class="trn error" data-trn-key="Your browser does not support canvas or JavaScript is not enabled.">
 							Your browser does not support canvas or JavaScript is not enabled.
 						</div>
 					</canvas>
