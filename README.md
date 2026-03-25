@@ -21,7 +21,7 @@ https://img-ps.com/
 Just download this code, upload to your server. home page is index.html
 
 
-## Thanks
+Thanks
 
 
 
