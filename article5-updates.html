@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Version 3.0 Released! - Img-PS Updates</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #667eea;
+			--secondary-color: #764ba2;
+			--accent-color: #f093fb;
+			--dark-color: #2d3436;
+			--light-color: #f5f6fa;
+			--white: #ffffff;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		nav {
+			background: rgba(255, 255, 255, 0.95);
+			padding: 1rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: var(--dark-color);
+			font-weight: 500;
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover {
+			color: var(--primary-color);
+		}
+
+		.nav-cta {
+			background: var(--primary-color);
+			color: var(--white);
+			padding: 0.6rem 1.5rem;
+			border-radius: 25px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: var(--transition);
+		}
+
+		.nav-cta:hover {
+			background: var(--secondary-color);
+			transform: translateY(-2px);
+		}
+
+		.hamburger {
+			display: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+			flex: 1;
+		}
+
+		.article-header {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		.article-header h1 {
+			color: var(--white);
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.article-meta {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+			margin-bottom: 2rem;
+		}
+
+		.article-meta span {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.content {
+			background: var(--white);
+			padding: 3rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.content h2 {
+			color: var(--primary-color);
+			font-size: 1.8rem;
+			margin: 2rem 0 1rem;
+		}
+
+		.content p {
+			margin-bottom: 1.5rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.content ul {
+			margin-left: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.content li {
+			margin-bottom: 0.5rem;
+		}
+
+		.update-card {
+			background: var(--light-color);
+			padding: 1.5rem;
+			border-radius: 15px;
+			margin: 1.5rem 0;
+			border-left: 4px solid var(--primary-color);
+		}
+
+		.update-card h3 {
+			color: var(--dark-color);
+			margin-bottom: 0.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.update-card p {
+			color: #666;
+			margin-bottom: 0;
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 0.3rem 1rem;
+			background: var(--primary-color);
+			color: var(--white);
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 600;
+			vertical-align: middle;
+		}
+
+		.image-placeholder {
+			width: 100%;
+			height: 300px;
+			background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--white);
+			font-size: 2rem;
+			margin: 2rem 0;
+		}
+
+		.back-link {
+			display: inline-block;
+			margin-top: 2rem;
+			color: var(--primary-color);
+			text-decoration: none;
+			font-weight: 600;
+		}
+
+		.back-link:hover {
+			text-decoration: underline;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem;
+			color: var(--white);
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			opacity: 0.8;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--white);
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.nav-menu.active {
+				display: flex;
+			}
+
+			.hamburger {
+				display: block;
+			}
+
+			.content {
+				padding: 2rem;
+			}
+
+			.article-header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">Img-PS</a>
+		<ul class="nav-menu" id="navMenu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="help.html">Help</a></li>
+			<li><a href="blogs.html">Blogs</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy</a></li>
+		</ul>
+		<div class="hamburger" id="hamburger">☰</div>
+		<a href="editor.html" class="nav-cta">Start Editing</a>
+	</nav>
+
+	<div class="container">
+			<div class="article-header">
+				<h1>Version 3.0 Released!</h1>
+			</div>
+
+		<div class="content">
+			<p>Experience the new Img-PS interface with improved performance, new tools, and better user experience. Version 3.0 is a major update that transforms how you edit photos!</p>
+
+			<div class="image-placeholder">🚀 Version 3.0 Launch</div>
+
+			<h2>✨ What's New?</h2>
+			<p>Version 3.0 includes over 50 improvements and new features based on user feedback. Here's what you can expect:</p>
+
+			<div class="update-card">
+				<h3>🎨 <span class="badge">New</span> Enhanced Interface</h3>
+				<p>Completely redesigned user interface with a modern, clean look. Improved workflow with better organization and accessibility.</p>
+			</div>
+
+			<div class="update-card">
+				<h3>⚡ <span class="badge">Fast</span> Performance Boost</h3>
+				<p>Editor loads 3x faster with our new rendering engine. Smooth performance even with large, complex projects with hundreds of layers.</p>
+			</div>
+
+			<div class="update-card">
+				<h3>📱 <span class="badge">Mobile</span> Touch Support</h3>
+				<p>Full touch optimization for tablets and mobile devices. All tools now work perfectly with touch gestures and on-screen keyboards.</p>
+			</div>
+
+			<div class="update-card">
+				<h3>💾 <span class="badge">Safe</span> Auto-Save</h3>
+				<p>Never lose your work! Projects are automatically saved every 30 seconds and can be restored even after accidental browser closure.</p>
+			</div>
+
+			<h2>🚀 New Features</h2>
+			<ul>
+				<li><strong>AI Background Removal:</strong> Pixel-perfect background removal in seconds</li>
+				<li><strong>20+ New Filters:</strong> Cinematic looks, vintage effects, and artistic styles</li>
+				<li><strong>Layer Groups:</strong> Organize complex projects with nested layer groups</li>
+				<li><strong>Custom Presets:</strong> Save and share your favorite filter combinations</li>
+				<li><strong>Advanced Export:</strong> Export in 10+ formats with full quality control</li>
+				<li><strong>Cloud Sync:</strong> Access your projects from any device</li>
+			</ul>
+
+			<h2>🎨 Interface Improvements</h2>
+			<p>The new interface features:</p>
+			<ul>
+				<li><strong>Dark Mode:</strong> Easy on the eyes for long editing sessions</li>
+				<li><strong>Customizable Panels:</strong> Rearrange and resize panels to your preference</li>
+				<li><strong>Quick Access Toolbar:</strong> Your most-used tools always within reach</li>
+				<li><strong>Context-Sensitive Help:</strong> Get help exactly when you need it</li>
+				<li><strong>Keyboard Shortcuts:</strong> Over 100 shortcuts for maximum efficiency</li>
+			</ul>
+
+			<div class="update-card">
+				<h3>🎨 <strong>Dark Mode:</strong></h3>
+				<p>Toggle dark mode from the settings menu. Perfect for low-light environments and reduces eye strain during extended editing sessions.</p>
+			</div>
+
+			<h2>⚡ Performance Improvements</h2>
+			<p>Version 3.0 includes significant performance enhancements:</p>
+			<ul>
+				<li><strong>GPU Acceleration:</strong> Hardware-accelerated rendering for smooth performance</li>
+				<li><strong>Smart Caching:</strong> Intelligent caching system for faster preview updates</li>
+				<li><strong>Memory Optimization:</strong> Reduced memory usage for large projects</li>
+				<li><strong>Multi-threading:</strong> Parallel processing for faster filter application</li>
+			</ul>
+
+			<div class="update-card">
+				<h3>⚡ <strong>Real-world Impact:</strong></h3>
+				<p>Large 50-layer project that took 8 seconds to render in version 2.0 now renders in under 2 seconds with version 3.0!</p>
+			</div>
+
+			<h2>📱 Mobile Experience</h2>
+			<p>Tablet and mobile optimization includes:</p>
+			<ul>
+				<li><strong>Touch Gestures:</strong> Pinch to zoom, swipe to navigate</li>
+				<li><strong>On-Screen Keyboard:</strong> Optimized for text input on mobile</li>
+				<li><strong>Responsive Panels:</strong> Panels adapt to screen size</li>
+				<li><strong>Gesture Controls:</strong> Customizable gestures for common actions</li>
+			</ul>
+
+			<h2>💾 Auto-Save Feature</h2>
+			<p>Our new auto-save system works like this:</p>
+			<ol>
+				<li>Project saves automatically every 30 seconds</li>
+				<li>Version history is maintained for 24 hours</li>
+				<li>Restore any previous version if needed</li>
+				<li>Manual saves create additional version points</li>
+			</ol>
+
+			<div class="update-card">
+				<h3>🔒 <strong>Privacy First:</strong></h3>
+				<p>All auto-saves happen locally on your device. We don't store your projects on our servers unless you explicitly choose cloud sync.</p>
+			</div>
+
+			<h2>How to Get Started</h2>
+			<p>Updating is automatic! Simply refresh your browser and you'll have immediate access to all new features.</p>
+			<ul>
+				<li><strong>Explore the Interface:</strong> Take a tour of the new layout</li>
+				<li><strong>Try AI Background Removal:</strong> Select your subject and watch the magic happen</li>
+				<li><strong>Experiment with Filters:</strong> Browse the new filter library</li>
+				<li><strong>Use Keyboard Shortcuts:</strong> Press "?" to see all available shortcuts</li>
+			</ul>
+
+			<h2>What's Next?</h2>
+			<p>We're already working on version 3.1 with even more exciting features:</p>
+			<ul>
+				<li>Advanced layer blending modes</li>
+				<li>Batch processing capabilities</li>
+				<li>Cloud storage integration</li>
+				<li>Collaborative editing features</li>
+				<li>AI-powered image upscaling</li>
+			</ul>
+
+			<h2>Feedback Welcome</h2>
+			<p>Your feedback helps us improve! If you have suggestions or encounter any issues:</p>
+			<ul>
+				<li>Visit our Help Center</li>
+				<li>Submit feedback through the contact form</li>
+				<li>Join our community forum</li>
+				<li>Follow us on social media</li>
+			</ul>
+
+			<p><a href="blogs.html" class="back-link">← Back to Blog</a></p>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer-links">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+			<a href="help.html">Help</a>
+			<a href="privacy.html">Privacy Policy</a>
+			<a href="blogs.html">Blogs</a>
+		</div>
+		<p>&copy; 2026 Img-PS. Free Online Image Editor.</p>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navMenu = document.getElementById('navMenu');
+
+		hamburger.addEventListener('click', () => {
+			navMenu.classList.toggle('active');
+		});
+
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+			});
+		});
+	</script>
+</body>
+
+</html>

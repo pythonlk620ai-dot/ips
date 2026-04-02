@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Getting Started with Layers - Img-PS Tutorial</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #667eea;
+			--secondary-color: #764ba2;
+			--accent-color: #f093fb;
+			--dark-color: #2d3436;
+			--light-color: #f5f6fa;
+			--white: #ffffff;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		nav {
+			background: rgba(255, 255, 255, 0.95);
+			padding: 1rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: var(--dark-color);
+			font-weight: 500;
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover {
+			color: var(--primary-color);
+		}
+
+		.nav-cta {
+			background: var(--primary-color);
+			color: var(--white);
+			padding: 0.6rem 1.5rem;
+			border-radius: 25px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: var(--transition);
+		}
+
+		.nav-cta:hover {
+			background: var(--secondary-color);
+			transform: translateY(-2px);
+		}
+
+		.hamburger {
+			display: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+			flex: 1;
+		}
+
+		.article-header {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		.article-header h1 {
+			color: var(--white);
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.article-meta {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+			margin-bottom: 2rem;
+		}
+
+		.article-meta span {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.content {
+			background: var(--white);
+			padding: 3rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.content h2 {
+			color: var(--primary-color);
+			font-size: 1.8rem;
+			margin: 2rem 0 1rem;
+		}
+
+		.content p {
+			margin-bottom: 1.5rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.content ul {
+			margin-left: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.content li {
+			margin-bottom: 0.5rem;
+		}
+
+		.step-card {
+			background: var(--light-color);
+			padding: 1.5rem;
+			border-radius: 15px;
+			margin: 1.5rem 0;
+			border-left: 4px solid var(--primary-color);
+		}
+
+		.step-card h3 {
+			color: var(--dark-color);
+			margin-bottom: 0.5rem;
+		}
+
+		.step-card ol {
+			margin-left: 2rem;
+		}
+
+		.step-card li {
+			margin-bottom: 0.5rem;
+		}
+
+		.image-placeholder {
+			width: 100%;
+			height: 300px;
+			background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--white);
+			font-size: 2rem;
+			margin: 2rem 0;
+		}
+
+		.back-link {
+			display: inline-block;
+			margin-top: 2rem;
+			color: var(--primary-color);
+			text-decoration: none;
+			font-weight: 600;
+		}
+
+		.back-link:hover {
+			text-decoration: underline;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem;
+			color: var(--white);
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			opacity: 0.8;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--white);
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.nav-menu.active {
+				display: flex;
+			}
+
+			.hamburger {
+				display: block;
+			}
+
+			.content {
+				padding: 2rem;
+			}
+
+			.article-header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">Img-PS</a>
+		<ul class="nav-menu" id="navMenu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="help.html">Help</a></li>
+			<li><a href="blogs.html">Blogs</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy</a></li>
+		</ul>
+		<div class="hamburger" id="hamburger">☰</div>
+		<a href="editor.html" class="nav-cta">Start Editing</a>
+	</nav>
+
+	<div class="container">
+			<div class="article-header">
+				<h1>Getting Started with Layers</h1>
+			</div>
+
+		<div class="content">
+			<p>Layers are the foundation of professional photo editing. In this tutorial, we'll walk you through the basics of using layers in Img-PS to create stunning compositions.</p>
+
+			<div class="image-placeholder">🎨 Layers Interface</div>
+
+			<h2>What Are Layers?</h2>
+			<p>Layers are like transparent sheets stacked on top of each other. Each layer can contain different elements of your image, allowing you to edit them independently without affecting other parts of your work.</p>
+
+			<h2>Why Use Layers?</h2>
+			<ul>
+				<li>Non-destructive editing - edit without permanently changing your original image</li>
+				<li>Easy corrections - modify individual elements without redoing everything</li>
+				<li>Complex compositions - combine multiple images and elements seamlessly</li>
+				<li>Flexible workflow - rearrange and adjust layers as needed</li>
+			</ul>
+
+			<div class="step-card">
+				<h3>Step 1: Creating a New Layer</h3>
+				<ol>
+					<li>Open your image in Img-PS</li>
+					<li>Click the "Layers" panel on the right sidebar</li>
+					<li>Click the "+" button to add a new layer</li>
+					<li>Your new layer will appear in the layers list</li>
+				</ol>
+			</div>
+
+			<div class="image-placeholder">➕ Add Layer Button</div>
+
+			<div class="step-card">
+				<h3>Step 2: Adding Content to Layers</h3>
+				<ol>
+					<li>Select the layer you want to work on</li>
+					<li>Use the text tool to add text</li>
+					<li>Or use the brush tool to draw</li>
+					<li>You can also drag and drop images to add them as layers</li>
+				</ol>
+			</div>
+
+			<div class="step-card">
+				<h3>Step 3: Managing Layers</h3>
+				<ol>
+					<li>Drag layers up or down to change their order</li>
+					<li>Lower layers appear behind higher layers</li>
+					<li>Use the eye icon to show/hide layers</li>
+					<li>Double-click a layer to rename it</li>
+				</ol>
+			</div>
+
+			<div class="image-placeholder">📋 Layer Management</div>
+
+			<div class="step-card">
+				<h3>Step 4: Layer Blending Modes</h3>
+				<p>Layer blending modes determine how layers interact with each other:</p>
+				<ul>
+					<li><strong>Normal:</strong> Default mode, no blending</li>
+					<li><strong>Multiply:</strong> Darkens the image</li>
+					<li><strong>Screen:</strong> Lightens the image</li>
+					<li><strong>Overlay:</strong> Combines multiply and screen</li>
+					<li><strong>Soft Light:</strong> Subtle lighting effect</li>
+				</ul>
+			</div>
+
+			<div class="step-card">
+				<h3>Step 5: Layer Opacity</h3>
+				<p>Adjust the opacity of a layer to control its visibility:</p>
+				<ol>
+					<li>Select the layer in the layers panel</li>
+					<li>Find the "Opacity" slider</li>
+					<li>Drag the slider left to decrease opacity</li>
+					<li>Drag right to increase opacity</li>
+				</ol>
+			</div>
+
+			<h2>Common Layer Uses</h2>
+			<ul>
+				<li><strong>Text Layers:</strong> Add titles, captions, and graphics</li>
+				<li><strong>Adjustment Layers:</strong> Apply filters without affecting original</li>
+				<li><strong>Image Layers:</strong> Combine multiple photos</li>
+				<li><strong>Mask Layers:</strong> Hide parts of a layer selectively</li>
+			</ul>
+
+			<h2>Practice Exercise</h2>
+			<p>Try creating a simple composition:</p>
+			<ol>
+				<li>Open a background photo</li>
+				<li>Add a text layer with your name</li>
+				<li>Add a shape layer as a border</li>
+				<li>Adjust opacity and blending modes to see different effects</li>
+			</ol>
+
+			<div class="image-placeholder">✨ Final Composition Example</div>
+
+			<h2>Next Steps</h2>
+			<p>Now that you understand the basics of layers, try experimenting with different layer combinations. Layers are essential for:</p>
+			<ul>
+				<li>Creating photo collages</li>
+				<li>Adding text and graphics</li>
+				<li>Applying selective effects</li>
+				<li>Building complex designs</li>
+			</ul>
+
+			<p><a href="blogs.html" class="back-link">← Back to Blog</a></p>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer-links">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+			<a href="help.html">Help</a>
+			<a href="privacy.html">Privacy Policy</a>
+			<a href="blogs.html">Blogs</a>
+		</div>
+		<p>&copy; 2026 Img-PS. Free Online Image Editor.</p>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navMenu = document.getElementById('navMenu');
+
+		hamburger.addEventListener('click', () => {
+			navMenu.classList.toggle('active');
+		});
+
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+			});
+		});
+	</script>
+</body>
+
+</html>

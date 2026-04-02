@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Help & Support - Img-PS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #667eea;
+			--secondary-color: #764ba2;
+			--accent-color: #f093fb;
+			--dark-color: #2d3436;
+			--light-color: #f5f6fa;
+			--white: #ffffff;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		nav {
+			background: rgba(255, 255, 255, 0.95);
+			padding: 1rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: var(--dark-color);
+			font-weight: 500;
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover {
+			color: var(--primary-color);
+		}
+
+		.nav-cta {
+			background: var(--primary-color);
+			color: var(--white);
+			padding: 0.6rem 1.5rem;
+			border-radius: 25px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: var(--transition);
+		}
+
+		.nav-cta:hover {
+			background: var(--secondary-color);
+			transform: translateY(-2px);
+		}
+
+		.hamburger {
+			display: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+			flex: 1;
+			display: grid;
+			grid-template-columns: 250px 1fr;
+			gap: 3rem;
+		}
+
+		.page-header {
+			grid-column: 1 / -1;
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		.page-header h1 {
+			color: var(--white);
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header p {
+			color: rgba(255, 255, 255, 0.9);
+			font-size: 1.2rem;
+		}
+
+		.sidebar {
+			background: var(--white);
+			padding: 2rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+			height: fit-content;
+		}
+
+		.sidebar h3 {
+			color: var(--primary-color);
+			margin-bottom: 1.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--primary-color);
+		}
+
+		.sidebar ul {
+			list-style: none;
+		}
+
+		.sidebar li {
+			margin-bottom: 0.8rem;
+		}
+
+		.sidebar a {
+			text-decoration: none;
+			color: #555;
+			transition: var(--transition);
+			display: block;
+			padding: 0.5rem 1rem;
+			border-radius: 8px;
+		}
+
+		.sidebar a:hover {
+			color: var(--primary-color);
+			background: var(--light-color);
+		}
+
+		.content {
+			background: var(--white);
+			padding: 3rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.content h2 {
+			color: var(--primary-color);
+			font-size: 2rem;
+			margin-bottom: 1.5rem;
+			margin-top: 2rem;
+		}
+
+		.content h2:first-of-type {
+			margin-top: 0;
+		}
+
+		.content p {
+			margin-bottom: 1rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.content ul {
+			margin-left: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.content li {
+			margin-bottom: 0.5rem;
+		}
+
+		.content a {
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.content a:hover {
+			text-decoration: underline;
+		}
+
+		footer {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: 2rem;
+			color: var(--white);
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			opacity: 0.8;
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				grid-template-columns: 1fr;
+			}
+
+			.nav-menu {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--white);
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.nav-menu.active {
+				display: flex;
+			}
+
+			.hamburger {
+				display: block;
+			}
+
+			.content,
+			.sidebar {
+				padding: 2rem;
+			}
+
+			.page-header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">Img-PS</a>
+		<ul class="nav-menu" id="navMenu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="help.html">Help</a></li>
+			<li><a href="blogs.html">Blogs</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy</a></li>
+		</ul>
+		<div class="hamburger" id="hamburger">☰</div>
+		<a href="editor.html" class="nav-cta">Start Editing</a>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Help & Support</h1>
+			<p>Find answers to your questions and get support</p>
+		</div>
+
+		<div class="sidebar">
+			<h3>Quick Links</h3>
+			<ul>
+				<li><a href="#getting-started">Getting Started</a></li>
+				<li><a href="#features">Features Guide</a></li>
+				<li><a href="#troubleshooting">Troubleshooting</a></li>
+				<li><a href="#faq">FAQ</a></li>
+				<li><a href="#tutorials">Video Tutorials</a></li>
+			</ul>
+		</div>
+
+		<div class="content">
+			<h2 id="getting-started">Getting Started</h2>
+			<p>Welcome to Img-PS! Our online image editor is designed to be intuitive and powerful. Here's how to get started:</p>
+			<ul>
+				<li><strong>Upload an image:</strong> Click "File" → "Open" or drag and drop your image onto the editor</li>
+				<li><strong>Explore tools:</strong> Use the left sidebar for editing tools and right sidebar for layers and properties</li>
+				<li><strong>Apply effects:</strong> Try filters, adjustments, and other effects from the menu</li>
+				<li><strong>Save your work:</strong> Click "File" → "Save As" to download your edited image</li>
+			</ul>
+
+			<h2 id="features">Features Guide</h2>
+			<h3>Layers</h3>
+			<p>Layers allow you to work on different parts of your image independently. You can add text, images, or adjustments as separate layers.</p>
+
+			<h3>Filters</h3>
+			<p>Apply beautiful filters to enhance your photos. Browse through categories like Blur, Color, Distort, and more.</p>
+
+			<h3>Text Tools</h3>
+			<p>Add text to your images with customizable fonts, sizes, colors, and effects. You can rotate, scale, and position text precisely.</p>
+
+			<h2 id="troubleshooting">Troubleshooting</h2>
+			<h3>Editor not loading?</h3>
+			<p>Make sure you're using a modern browser (Chrome, Firefox, Edge, or Safari) and that JavaScript is enabled.</p>
+
+			<h3>Can't upload images?</h3>
+			<p>Check that your image file is in a supported format (JPG, PNG, GIF, BMP) and isn't too large (under 10MB recommended).</p>
+
+			<h3>Performance issues?</h3>
+			<p>Try closing other browser tabs, reducing image size, or using simpler effects. The editor works best with modern hardware.</p>
+
+			<h2 id="faq">Frequently Asked Questions</h2>
+			<h3>Is Img-PS really free?</h3>
+			<p>Yes! Img-PS is completely free to use. No hidden fees, no subscriptions required.</p>
+
+			<h3>Do I need to create an account?</h3>
+			<p>No, you can use Img-PS without creating an account. All editing happens in your browser.</p>
+
+			<h3>Are my images saved on your servers?</h3>
+			<p>No, your images never leave your device. Everything is processed in your browser for maximum privacy.</p>
+
+			<h3>What file formats are supported?</h3>
+			<p>We support JPG, PNG, GIF, BMP, and WebP formats for both opening and saving images.</p>
+
+			<h2 id="tutorials">Video Tutorials</h2>
+			<p>Check out our YouTube channel for video tutorials on:</p>
+			<ul>
+				<li>Getting started with Img-PS</li>
+				<li>Advanced layer techniques</li>
+				<li>Background removal tutorial</li>
+				<li>Creating stunning photo effects</li>
+				<li>Workflow tips and tricks</li>
+			</ul>
+			<p><a href="https://youtube.com/imgps" target="_blank">Visit our YouTube channel</a></p>
+
+			<div style="margin-top: 3rem; padding: 2rem; background: var(--light-color); border-radius: 15px; text-align: center;">
+				<h3 style="color: var(--primary-color); margin-bottom: 1rem;">Still Need Help?</h3>
+				<p>Contact our support team and we'll be happy to assist you.</p>
+				<a href="contact.html" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 2rem; background: var(--primary-color); color: var(--white); text-decoration: none; border-radius: 25px; font-weight: 600;">Contact Support</a>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer-links">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+			<a href="help.html">Help</a>
+			<a href="privacy.html">Privacy Policy</a>
+			<a href="blogs.html">Blogs</a>
+		</div>
+		<p>&copy; 2026 Img-PS. Free Online Image Editor.</p>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navMenu = document.getElementById('navMenu');
+
+		hamburger.addEventListener('click', () => {
+			navMenu.classList.toggle('active');
+		});
+
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+			});
+		});
+	</script>
+</body>
+
+</html>

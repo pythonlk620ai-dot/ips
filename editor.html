@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Free Online Image Editor (Web Version) | Img-PS</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<meta name="description" content="Img-PS is a free online image editor using HTML5 technology. No download or installation is required. Edit photos in your browser with filters, resizing, text, drawing tools, layers, and background removal." />
+	<meta name="keywords" content="Img-PS, Online PS, Online Photoshop, Free PS, Free Image Editor, Free Online Image Editor, Online Drawing, Photo Retouching, Background Removal, Image Processing, Filter Effects, Layer Editing, HTML5 Canvas, No Download, Web Version" />
+	<meta name="robots" content="index,follow" />
+	<meta name="author" content="Img-PS" />
+	<meta name="application-name" content="Img-PS" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, user-scalable=yes" />
+	<link rel="icon" sizes="192x192" href="images/favicon.png">
+	<!-- <link rel="manifest" href="dist/manifest.json"> -->
+	<!-- Google -->
+
+	<link rel="canonical" href="https://img-ps.top">
+	<meta itemprop="name" content="Free Online Image Editor (Web Version) | Img-PS" />
+	<meta itemprop="description" content="Img-PS is a free online image editor using HTML5. Edit, adjust, and enhance images in your browser with no installation." />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Free Online Image Editor (Web Version) | Img-PS" />
+	<meta name="twitter:description" content="Free online image editing with HTML5. Edit, retouch, and apply effects in your browser—no download." />
+	<!-- Facebook, Pinterest -->
+	<meta property="og:title" content="Free Online Image Editor (Web Version) | Img-PS" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://img-ps.top" />
+	<meta property="og:description" content="Img-PS is a free online image editor using HTML5. No download required. Filters, layers, text, resizing, and more." />
+	<meta property="og:site_name" content="Img-PS" />
+
+	<script type="application/ld+json">
+		{
+		  "@context": "https://img-ps.top",
+		  "@type": "WebSite",
+		  "name": "Img-PS",
+		  "url": "https://img-ps.top",
+		  "description": "Free online image editor (web version) using HTML5. No download required."
+		}
+	</script>
+
+	<script src="dist/bundle.js" async></script>
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9279932937238095"
+     crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+
+		<nav aria-label="Main Menu" class="main_menu" id="main_menu"></nav>
+
+		<div class="submenu">
+			<a class="logo" href="#">Img-PS</a>
+			<div class="block attributes" id="action_attributes"></div>
+			<button class="undo_button" id="undo_button" type="button">
+				<span class="sr_only">Undo</span>
+			</button>
+		</div>
+
+		<div class="sidebar_left" id="tools_container"></div>
+
+
+		<div class="middle_area" id="middle_area">
+
+			<canvas class="ruler_left" id="ruler_left"></canvas>
+			<canvas class="ruler_top" id="ruler_top"></canvas>
+
+			<div class="main_wrapper" id="main_wrapper">
+				<div class="canvas_wrapper" id="canvas_wrapper">
+					<div id="mouse"></div>
+					<div class="transparent-grid" id="canvas_minipaint_background"></div>
+					<canvas id="canvas_minipaint" width="200" height="480">
+						<div class="trn error" data-trn-key="Your browser does not support canvas or JavaScript is not enabled.">
+							Your browser does not support canvas or JavaScript is not enabled.
+						</div>
+					</canvas>
+				</div>
+			</div>
+		</div>
+
+		<div class="sidebar_right">
+			<div class="preview block">
+				<h2 class="trn toggle" data-target="toggle_preview">Preview</h2>
+				<div id="toggle_preview"></div>
+			</div>
+
+			<div class="colors block">
+				<h2 class="trn toggle" data-target="toggle_colors">Colors</h2>
+				<div class="content" id="toggle_colors"></div>
+			</div>
+
+			<div class="block" id="info_base">
+				<h2 class="trn toggle toggle-full" data-target="toggle_info">Information</h2>
+				<div class="content" id="toggle_info"></div>
+			</div>
+
+			<div class="details block" id="details_base">
+				<h2 class="trn toggle toggle-full" data-target="toggle_details">Layer details</h2>
+				<div class="content details-content" id="toggle_details"></div>
+			</div>
+
+			<div class="layers block">
+				<h2 class="trn">Layers</h2>
+				<div class="content" id="layers_base"></div>
+			</div>
+		</div>
+	</div>
+	<div class="mobile_menu">
+		<button class="left_mobile_menu" id="left_mobile_menu_button" type="button">
+			<span class="sr_only">Toggle Menu</span>
+		</button>
+		<button class="right_mobile_menu" id="mobile_menu_button" type="button">
+			<span class="sr_only">Toggle Menu</span>
+		</button>
+	</div>
+	<div class="hidden" id="tmp"></div>
+	<div id="popups"></div>
+</body>
+
+</html>

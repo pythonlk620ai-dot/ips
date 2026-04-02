@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Privacy Policy - Img-PS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #667eea;
+			--secondary-color: #764ba2;
+			--accent-color: #f093fb;
+			--dark-color: #2d3436;
+			--light-color: #f5f6fa;
+			--white: #ffffff;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		nav {
+			background: rgba(255, 255, 255, 0.95);
+			padding: 1rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: var(--dark-color);
+			font-weight: 500;
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover {
+			color: var(--primary-color);
+		}
+
+		.nav-cta {
+			background: var(--primary-color);
+			color: var(--white);
+			padding: 0.6rem 1.5rem;
+			border-radius: 25px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: var(--transition);
+		}
+
+		.nav-cta:hover {
+			background: var(--secondary-color);
+			transform: translateY(-2px);
+		}
+
+		.hamburger {
+			display: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		.container {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+			flex: 1;
+		}
+
+		.page-header {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		.page-header h1 {
+			color: var(--white);
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.page-header p {
+			color: rgba(255, 255, 255, 0.9);
+			font-size: 1.2rem;
+		}
+
+		.content {
+			background: var(--white);
+			padding: 3rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.content h2 {
+			color: var(--primary-color);
+			font-size: 1.8rem;
+			margin-bottom: 1.5rem;
+			margin-top: 2rem;
+		}
+
+		.content h2:first-of-type {
+			margin-top: 0;
+		}
+
+		.content p {
+			margin-bottom: 1rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.content ul {
+			margin-left: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.content li {
+			margin-bottom: 0.5rem;
+		}
+
+		.content strong {
+			color: var(--dark-color);
+		}
+
+		.privacy-visual {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			margin: 2rem 0;
+		}
+
+		.privacy-card {
+			text-align: center;
+			padding: 2rem;
+			background: var(--light-color);
+			border-radius: 15px;
+			transition: var(--transition);
+		}
+
+		.privacy-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.privacy-card .icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.privacy-card h3 {
+			color: var(--primary-color);
+			margin-bottom: 0.5rem;
+		}
+
+		.privacy-card p {
+			color: #666;
+			font-size: 0.95rem;
+			margin-bottom: 0;
+		}
+
+		.security-section {
+			margin-top: 3rem;
+			padding: 2rem;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			border-radius: 20px;
+			color: var(--white);
+		}
+
+		.security-section h2 {
+			color: var(--white);
+			text-align: center;
+			margin-bottom: 1.5rem;
+		}
+
+		.security-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 2rem;
+		}
+
+		.security-item {
+			text-align: center;
+		}
+
+		.security-item .icon {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+		}
+
+		.security-item h3 {
+			margin-bottom: 0.5rem;
+		}
+
+		.security-item p {
+			color: rgba(255, 255, 255, 0.9);
+			font-size: 0.95rem;
+			margin-bottom: 0;
+		}
+
+		.lock-visual {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 2rem;
+			margin: 2rem 0;
+			flex-wrap: wrap;
+		}
+
+		.lock-icon {
+			font-size: 4rem;
+			color: var(--primary-color);
+			animation: lockPulse 3s ease-in-out infinite;
+		}
+
+		@keyframes lockPulse {
+			0%, 100% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.1);
+			}
+		}
+
+		.lock-text {
+			max-width: 500px;
+		}
+
+		.lock-text h3 {
+			color: var(--primary-color);
+			font-size: 1.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.lock-text p {
+			color: #555;
+			line-height: 1.6;
+		}
+
+		.info-visual {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			margin: 2rem 0;
+		}
+
+		.info-card {
+			padding: 1.5rem;
+			border-left: 4px solid var(--primary-color);
+			background: var(--light-color);
+			border-radius: 0 15px 15px 0;
+			transition: var(--transition);
+		}
+
+		.info-card:hover {
+			transform: translateX(5px);
+		}
+
+		.info-card .icon {
+			font-size: 2rem;
+			color: var(--primary-color);
+			margin-bottom: 1rem;
+		}
+
+		.info-card h3 {
+			color: var(--dark-color);
+			margin-bottom: 0.5rem;
+		}
+
+		.info-card p {
+			color: #666;
+			font-size: 0.95rem;
+			margin-bottom: 0;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem;
+			color: var(--white);
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			opacity: 0.8;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--white);
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.nav-menu.active {
+				display: flex;
+			}
+
+			.hamburger {
+				display: block;
+			}
+
+			.content {
+				padding: 2rem;
+			}
+
+			.page-header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">Img-PS</a>
+		<ul class="nav-menu" id="navMenu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="help.html">Help</a></li>
+			<li><a href="blogs.html">Blogs</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy</a></li>
+		</ul>
+		<div class="hamburger" id="hamburger">☰</div>
+		<a href="editor.html" class="nav-cta">Start Editing</a>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Privacy Policy</h1>
+			<p>Last updated: January 2026</p>
+		</div>
+
+		<div class="content">
+			<h2>1. Introduction</h2>
+			<p>At Img-PS, we are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, and protect your information when you use our online image editor.</p>
+
+			<h2>2. Information We Don't Collect</h2>
+			<p><strong>Important:</strong> Img-PS is designed with privacy in mind. We do NOT collect or store:</p>
+			<ul>
+				<li>Your images or photos</li>
+				<li>Your editing history or changes</li>
+				<li>Any personal information from your editing sessions</li>
+				<li>Files you upload or create</li>
+			</ul>
+			<p>All processing happens directly in your browser. Your images never leave your device.</p>
+
+			<h2>3. Cookies and Tracking</h2>
+			<p>We use essential cookies to make the editor work properly. These cookies are necessary for the functionality of our service and do not track you across the web.</p>
+			<p>We also use third-party advertising cookies (Google AdSense) to display relevant ads. You can opt out of these cookies through your browser settings or the Google AdSense privacy center.</p>
+
+			<h2>4. Third-Party Services</h2>
+			<p>Img-PS may use third-party services that have access to limited information necessary to provide the service. These services include:</p>
+			<ul>
+				<li><strong>Google AdSense:</strong> For displaying advertisements</li>
+				<li><strong>Analytics services:</strong> To understand how our service is used (anonymously)</li>
+			</ul>
+			<p>These third parties have strict privacy policies and are prohibited from using your information for their own purposes.</p>
+
+			<h2>5. Your Rights</h2>
+			<p>You have the right to:</p>
+			<ul>
+				<li>Access your personal information</li>
+				>Correct any inaccurate information</li>
+				<li>Request deletion of your information</li>
+				<li>Opt out of marketing communications</li>
+				<li>Withdraw consent at any time</li>
+			</ul>
+
+			<h2>6. Data Security</h2>
+			<p>We implement appropriate security measures to protect your information against unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the Internet is 100% secure.</p>
+
+			<h2>7. Children's Privacy</h2>
+			<p>Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child, please contact us immediately.</p>
+
+			<h2>8. Changes to This Policy</h2>
+			<p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+
+			<h2>9. Contact Us</h2>
+			<p>If you have any questions about this Privacy Policy or our privacy practices, please contact us:</p>
+			<ul>
+				<li><strong>Email:</strong> privacy@img-ps.com</li>
+				<li><strong>Contact Form:</strong> <a href="contact.html">Contact Us</a></li>
+			</ul>
+
+			<div class="lock-visual">
+				<div class="lock-icon">🔒</div>
+				<div class="lock-text">
+					<h3>🔒 Your Privacy, Our Priority</h3>
+					<p>We use industry-standard encryption and security measures to ensure your data remains safe. All image processing happens directly in your browser, so your photos never leave your device. We believe privacy is a fundamental right.</p>
+				</div>
+			</div>
+
+			<div class="privacy-visual">
+				<div class="privacy-card">
+					<div class="icon">🛡️</div>
+					<h3>Secure Encryption</h3>
+					<p>All your data is protected with advanced encryption protocols to ensure maximum security.</p>
+				</div>
+				<div class="privacy-card">
+					<div class="icon">🚫</div>
+					<h3>No Data Collection</h3>
+					<p>We don't collect or store your images or personal information. Everything stays on your device.</p>
+				</div>
+				<div class="privacy-card">
+					<div class="icon">✅</div>
+					<h3>GDPR Compliant</h3>
+					<p>Our privacy policy meets all GDPR requirements for data protection and privacy.</p>
+				</div>
+				<div class="privacy-card">
+					<div class="icon">👁️</div>
+					<h3>Transparent</h3>
+					<p>We believe in transparency. Know exactly what data we collect and how we use it.</p>
+				</div>
+			</div>
+
+			<div class="security-section">
+				<h2>🔒 Security Measures</h2>
+				<div class="security-grid">
+					<div class="security-item">
+						<div class="icon">🔒</div>
+						<h3>SSL Encryption</h3>
+						<p>All connections are encrypted with 256-bit SSL</p>
+					</div>
+					<div class="security-item">
+						<div class="icon">🏢</div>
+						<h3>Secure Servers</h3>
+						<p>Hosted on secure, enterprise-grade infrastructure</p>
+					</div>
+					<div class="security-item">
+						<div class="icon">🔄</div>
+						<h3>Regular Audits</h3>
+						<p>Security systems regularly tested and updated</p>
+					</div>
+					<div class="security-item">
+						<div class="icon">👥</div>
+						<h3>Privacy Team</h3>
+						<p>Dedicated team monitoring privacy compliance</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="info-visual">
+				<div class="info-card">
+					<div class="icon">📝</div>
+					<h3>Cookies Policy</h3>
+					<p>We use essential cookies for functionality and analytics cookies to improve your experience. You can control these through your browser settings.</p>
+				</div>
+				<div class="info-card">
+					<div class="icon">👥</div>
+					<h3>User Rights</h3>
+					<p>You have full control over your data. Access, correct, or delete your information anytime through your account settings.</p>
+				</div>
+				<div class="info-card">
+					<div class="icon">🌍</div>
+					<h3>Global Protection</h3>
+					<p>Our privacy policy applies globally and protects users from all regions with appropriate safeguards.</p>
+				</div>
+			</div>
+
+			<div style="margin-top: 2rem; padding: 1.5rem; background: var(--light-color); border-radius: 15px; text-align: center;">
+				<p style="margin-bottom: 0;">By using Img-PS, you agree to the terms of this Privacy Policy.</p>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer-links">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+			<a href="help.html">Help</a>
+			<a href="privacy.html">Privacy Policy</a>
+			<a href="blogs.html">Blogs</a>
+		</div>
+		<p>&copy; 2026 Img-PS. Free Online Image Editor.</p>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navMenu = document.getElementById('navMenu');
+
+		hamburger.addEventListener('click', () => {
+			navMenu.classList.toggle('active');
+		});
+
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+			});
+		});
+	</script>
+</body>
+
+</html>

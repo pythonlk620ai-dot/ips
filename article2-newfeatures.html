@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>New Features Release - Img-PS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #667eea;
+			--secondary-color: #764ba2;
+			--accent-color: #f093fb;
+			--dark-color: #2d3436;
+			--light-color: #f5f6fa;
+			--white: #ffffff;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		nav {
+			background: rgba(255, 255, 255, 0.95);
+			padding: 1rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: var(--dark-color);
+			font-weight: 500;
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover {
+			color: var(--primary-color);
+		}
+
+		.nav-cta {
+			background: var(--primary-color);
+			color: var(--white);
+			padding: 0.6rem 1.5rem;
+			border-radius: 25px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: var(--transition);
+		}
+
+		.nav-cta:hover {
+			background: var(--secondary-color);
+			transform: translateY(-2px);
+		}
+
+		.hamburger {
+			display: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+			flex: 1;
+		}
+
+		.article-header {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		.article-header h1 {
+			color: var(--white);
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.article-meta {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+			margin-bottom: 2rem;
+		}
+
+		.article-meta span {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.content {
+			background: var(--white);
+			padding: 3rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.content h2 {
+			color: var(--primary-color);
+			font-size: 1.8rem;
+			margin: 2rem 0 1rem;
+		}
+
+		.content p {
+			margin-bottom: 1.5rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.content ul {
+			margin-left: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.content li {
+			margin-bottom: 0.5rem;
+		}
+
+		.feature-card {
+			background: var(--light-color);
+			padding: 2rem;
+			border-radius: 15px;
+			margin: 1.5rem 0;
+			transition: var(--transition);
+		}
+
+		.feature-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.feature-card h3 {
+			color: var(--primary-color);
+			margin-bottom: 0.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.feature-card p {
+			color: #666;
+			margin-bottom: 0;
+		}
+
+		.image-placeholder {
+			width: 100%;
+			height: 300px;
+			background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--white);
+			font-size: 2rem;
+			margin: 2rem 0;
+		}
+
+		.badge {
+			display: inline-block;
+			padding: 0.3rem 1rem;
+			background: var(--primary-color);
+			color: var(--white);
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 600;
+			vertical-align: middle;
+		}
+
+		.back-link {
+			display: inline-block;
+			margin-top: 2rem;
+			color: var(--primary-color);
+			text-decoration: none;
+			font-weight: 600;
+		}
+
+		.back-link:hover {
+			text-decoration: underline;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem;
+			color: var(--white);
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			opacity: 0.8;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--white);
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.nav-menu.active {
+				display: flex;
+			}
+
+			.hamburger {
+				display: block;
+			}
+
+			.content {
+				padding: 2rem;
+			}
+
+			.article-header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">Img-PS</a>
+		<ul class="nav-menu" id="navMenu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="help.html">Help</a></li>
+			<li><a href="blogs.html">Blogs</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy</a></li>
+		</ul>
+		<div class="hamburger" id="hamburger">☰</div>
+		<a href="editor.html" class="nav-cta">Start Editing</a>
+	</nav>
+
+	<div class="container">
+			<div class="article-header">
+				<h1>✨ New Features Release 3.0</h1>
+			</div>
+
+		<div class="content">
+			<p>We're excited to announce the release of Img-PS version 3.0! This major update brings powerful new features, improved performance, and an enhanced user experience. Let's explore what's new!</p>
+
+			<div class="image-placeholder">🚀 Version 3.0 Launch</div>
+
+			<h2>What's New in Version 3.0?</h2>
+			<p>Our latest release includes over 50 improvements and new features based on your feedback. Here are the highlights:</p>
+
+			<div class="feature-card">
+				<h3>🔒 <span class="badge">New</span> AI-Powered Background Removal</h3>
+				<p>Our new AI algorithm provides pixel-perfect background removal in seconds. Simply select your subject and let our technology handle the rest!</p>
+			</div>
+
+			<div class="feature-card">
+				<h3>🎨 <span class="badge">Enhanced</span> Filter Library</h3>
+				<p>We've added 20+ new filters including cinematic looks, vintage effects, and artistic styles. All filters are now non-destructive and can be adjusted in real-time.</p>
+			</div>
+
+			<div class="feature-card">
+				<h3>⚡ <span class="badge">Fast</span> Performance Improvements</h3>
+				<p>Editor loads 3x faster with improved rendering engine. Smooth performance even with large, complex projects with multiple layers.</p>
+			</div>
+
+			<div class="feature-card">
+				<h3>📱 <span class="badge">New</span> Mobile Optimization</h3>
+				<p>Full touch support for tablets and mobile devices. All tools are now optimized for touch interaction with gesture controls.</p>
+			</div>
+
+			<div class="feature-card">
+				<h3>💾 <span class="badge">New</span> Auto-Save Feature</h3>
+				<p>Never lose your work again! Your projects are automatically saved every 30 seconds and can be restored even if you accidentally close the browser.</p>
+			</div>
+
+			<div class="feature-card">
+				<h3>🖼️ <span class="badge">Enhanced</span> Export Options</h3>
+				<p>Export in 10+ formats including WebP, HEIC, and advanced PNG options. Control quality, compression, and metadata with ease.</p>
+			</div>
+
+			<h2>How to Get Started</h2>
+			<p>Updating to version 3.0 is automatic! Simply refresh your browser and you'll have access to all the new features. Here are some quick tips:</p>
+			<ul>
+				<li><strong>Try AI Background Removal:</strong> Select your subject and use the new "Remove Background" tool</li>
+				<li><strong>Explore Filters:</strong> Browse the new filter library and preview effects in real-time</li>
+				<li><strong>Use Keyboard Shortcuts:</strong> Press "?" to see all available shortcuts</li>
+				<li><strong>Check Tutorials:</strong> Our updated help center has new tutorials for all features</li>
+			</ul>
+
+			<div class="image-placeholder">🎨 New Filter Library</div>
+
+			<h2>What's Next?</h2>
+			<p>We're already working on version 3.1 with even more exciting features:</p>
+			<ul>
+				<li>Advanced layer blending modes</li>
+				<li>Batch processing capabilities</li>
+				<li>Cloud storage integration</li>
+				<li>Collaborative editing features</li>
+			</ul>
+
+			<h2>Feedback Welcome</h2>
+			<p>We value your feedback! If you have suggestions for future features or encounter any issues, please let us know through our contact form or social media channels.</p>
+
+			<p><a href="blogs.html" class="back-link">← Back to Blog</a></p>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer-links">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+			<a href="help.html">Help</a>
+			<a href="privacy.html">Privacy Policy</a>
+			<a href="blogs.html">Blogs</a>
+		</div>
+		<p>&copy; 2026 Img-PS. Free Online Image Editor.</p>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navMenu = document.getElementById('navMenu');
+
+		hamburger.addEventListener('click', () => {
+			navMenu.classList.toggle('active');
+		});
+
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+			});
+		});
+	</script>
+</body>
+
+</html>

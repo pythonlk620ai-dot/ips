@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>10 Quick Editing Hacks - Img-PS Tips & Tricks</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary-color: #667eea;
+			--secondary-color: #764ba2;
+			--accent-color: #f093fb;
+			--dark-color: #2d3436;
+			--light-color: #f5f6fa;
+			--white: #ffffff;
+			--shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			--transition: all 0.3s ease;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		}
+
+		nav {
+			background: rgba(255, 255, 255, 0.95);
+			padding: 1rem 5%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.nav-logo {
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+		}
+
+		.nav-menu a {
+			text-decoration: none;
+			color: var(--dark-color);
+			font-weight: 500;
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover {
+			color: var(--primary-color);
+		}
+
+		.nav-cta {
+			background: var(--primary-color);
+			color: var(--white);
+			padding: 0.6rem 1.5rem;
+			border-radius: 25px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: var(--transition);
+		}
+
+		.nav-cta:hover {
+			background: var(--secondary-color);
+			transform: translateY(-2px);
+		}
+
+		.hamburger {
+			display: none;
+			cursor: pointer;
+			font-size: 1.5rem;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 3rem 20px;
+			flex: 1;
+		}
+
+		.article-header {
+			text-align: center;
+			margin-bottom: 3rem;
+		}
+
+		.article-header h1 {
+			color: var(--white);
+			font-size: 3rem;
+			margin-bottom: 1rem;
+		}
+
+		.article-meta {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+			margin-bottom: 2rem;
+		}
+
+		.article-meta span {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.content {
+			background: var(--white);
+			padding: 3rem;
+			border-radius: 20px;
+			box-shadow: var(--shadow);
+		}
+
+		.content h2 {
+			color: var(--primary-color);
+			font-size: 1.8rem;
+			margin: 2rem 0 1rem;
+		}
+
+		.content p {
+			margin-bottom: 1.5rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.content ul {
+			margin-left: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.content li {
+			margin-bottom: 0.5rem;
+		}
+
+		.hack-card {
+			background: var(--light-color);
+			padding: 1.5rem;
+			border-radius: 15px;
+			margin: 1.5rem 0;
+			border-left: 4px solid var(--primary-color);
+		}
+
+		.hack-card h3 {
+			color: var(--dark-color);
+			margin-bottom: 0.5rem;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		.hack-card p {
+			color: #666;
+			margin-bottom: 0;
+		}
+
+		.image-placeholder {
+			width: 100%;
+			height: 300px;
+			background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--white);
+			font-size: 2rem;
+			margin: 2rem 0;
+		}
+
+		.shortcut-badge {
+			display: inline-block;
+			padding: 0.3rem 0.8rem;
+			background: var(--primary-color);
+			color: var(--white);
+			border-radius: 8px;
+			font-family: monospace;
+			font-weight: 600;
+			margin: 0 0.3rem;
+		}
+
+		.back-link {
+			display: inline-block;
+			margin-top: 2rem;
+			color: var(--primary-color);
+			text-decoration: none;
+			font-weight: 600;
+		}
+
+		.back-link:hover {
+			text-decoration: underline;
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem;
+			color: var(--white);
+			background: rgba(0, 0, 0, 0.2);
+		}
+
+		.footer-links {
+			display: flex;
+			justify-content: center;
+			gap: 2rem;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+		}
+
+		.footer-links a {
+			color: var(--white);
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			opacity: 0.8;
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				display: none;
+				flex-direction: column;
+				position: absolute;
+				top: 100%;
+				left: 0;
+				width: 100%;
+				background: var(--white);
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.nav-menu.active {
+				display: flex;
+			}
+
+			.hamburger {
+				display: block;
+			}
+
+			.content {
+				padding: 2rem;
+			}
+
+			.article-header h1 {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<a href="index.html" class="nav-logo">Img-PS</a>
+		<ul class="nav-menu" id="navMenu">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="help.html">Help</a></li>
+			<li><a href="blogs.html">Blogs</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="privacy.html">Privacy</a></li>
+		</ul>
+		<div class="hamburger" id="hamburger">☰</div>
+		<a href="editor.html" class="nav-cta">Start Editing</a>
+	</nav>
+
+	<div class="container">
+			<div class="article-header">
+				<h1>10 Quick Editing Hacks</h1>
+			</div>
+
+		<div class="content">
+			<p>Speed up your workflow with these pro tips and shortcuts for using Img-PS like a professional. These hacks will help you edit faster and more efficiently!</p>
+
+			<div class="image-placeholder">⚡ Quick Editing Hacks</div>
+
+			<h2>Hack #1: Keyboard Shortcuts</h2>
+			<p>Master these essential shortcuts to work faster:</p>
+			<ul>
+				<li><strong>Ctrl+Z:</strong> Undo last action</li>
+				<li><strong>Ctrl+Y:</strong> Redo</li>
+				<li><strong>Ctrl+S:</strong> Save</li>
+				<li><strong>Ctrl+T:</strong> Transform tool</li>
+				<li><strong>Ctrl+L:</strong> Layers panel</li>
+				<li><strong>Ctrl+B:</strong> Brush tool</li>
+				<li><strong>Ctrl+T:</strong> Text tool</li>
+				<li><strong>?</strong> Show all shortcuts</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>⚡ <strong>Pro Tip:</strong> Double-tap <span class="shortcut-badge">Z</span> for Zoom</h3>
+				<p>Quickly zoom to 100% by double-tapping the Z key. Double-tap <span class="shortcut-badge">V</span> to return to normal view.</p>
+			</div>
+
+			<h2>Hack #2: Layer Management</h2>
+			<p>Keep your layers organized with these tips:</p>
+			<ul>
+				<li>Name layers clearly (double-click to rename)</li>
+				<li>Group related layers together</li>
+				<li>Use layer masks instead of erasing</li>
+				<li>Hide unused layers to improve performance</li>
+				<li>Lock layers you don't want to edit</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>📋 <strong>Pro Tip:</strong> Use <span class="shortcut-badge">Ctrl+G</span> to Group Layers</h3>
+				<p>Group layers by selecting multiple layers and pressing Ctrl+G. Rename the group for easy identification.</p>
+			</div>
+
+			<h2>Hack #3: Filter Presets</h2>
+			<p>Create and save your favorite filter combinations:</p>
+			<ul>
+				<li>Apply filters to a layer</li>
+				<li>Click the "Save Preset" button</li>
+				<li>Name your preset for easy recall</li>
+				<li>Access presets from the filter library</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>🎨 <strong>Pro Tip:</strong> Copy Filter Settings</h3>
+				<p>Right-click on a layer with filters and select "Copy Filters" to apply the same effects to other layers.</p>
+			</div>
+
+			<h2>Hack #4: Smart Selection</h2>
+			<p>Make precise selections quickly:</p>
+			<ul>
+				<li>Use the Quick Selection tool for automatic edge detection</li>
+				<li>Hold <span class="shortcut-badge">Shift</span> to add to selection</li>
+				<li>Hold <span class="shortcut-badge">Alt</span> to subtract from selection</li>
+				<li>Use "Select Subject" for instant subject detection</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>🎯 <strong>Pro Tip:</strong> Refine Edge Tool</h3>
+				<p>After making a selection, use "Select and Mask" to refine edges, especially for hair and fur.</p>
+			</div>
+
+			<h2>Hack #5: Batch Processing</h2>
+			<p>Apply the same edits to multiple images:</p>
+			<ol>
+				<li>Open your first image</li>
+				<li>Apply your desired edits</li>
+				<li>Go to File → Batch Process</li>
+				<li>Select the folder with your images</li>
+				<li>Click "Process All"</li>
+			</ol>
+
+			<div class="hack-card">
+				<h3>🔄 <strong>Pro Tip:</strong> Create Actions</h3>
+				<p>Record your workflow as an action and replay it on multiple images for consistent results.</p>
+			</div>
+
+			<h2>Hack #6: Color Harmony</h2>
+			<p>Use color theory for better designs:</p>
+			<ul>
+				<li><strong>Complementary:</strong> Colors opposite on the color wheel</li>
+				<li><strong>Analogous:</strong> Colors next to each other</li>
+				<li><strong>Triadic:</strong> Three colors evenly spaced</li>
+				<li>Use the Color Wheel tool for inspiration</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>🌈 <strong>Pro Tip:</strong> Extract Color Palette</h3>
+				<p>Use the Eyedropper tool to extract colors from reference images for consistent branding.</p>
+			</div>
+
+			<h2>Hack #7: Layer Blending</h2>
+			<p>Master layer blending modes:</p>
+			<ul>
+				<li><strong>Multiply:</strong> Darken images (great for shadows)</li>
+				<li><strong>Screen:</strong> Lighten images (great for highlights)</li>
+				<li><strong>Overlay:</strong> Combine multiply and screen</li>
+				<li><strong>Soft Light:</strong> Subtle lighting effects</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>✨ <strong>Pro Tip:</strong> Adjust Opacity Gradually</h3>
+				<p>Hold <span class="shortcut-badge">Shift</span> and drag the Opacity slider for precise control.</p>
+			</div>
+
+			<h2>Hack #8: Smart Objects</h2>
+			<p>Convert layers to Smart Objects for non-destructive editing:</p>
+			<ul>
+				<li>Right-click layer → Convert to Smart Object</li>
+				<li>Apply filters that can be adjusted later</li>
+				<li>Scale without quality loss</li>
+				<li>Edit original content anytime</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>🛡️ <strong>Pro Tip:</strong> Protect Your Work</h3>
+				<p>Smart Objects preserve quality and allow you to make changes without starting over.</p>
+			</div>
+
+			<h2>Hack #9: Keyboard Navigation</h2>
+			<p>Navigate the interface faster:</p>
+			<ul>
+				<li><strong>Tab:</strong> Toggle sidebar visibility</li>
+				<li><strong>Shift+Tab:</strong> Toggle all panels</li>
+				<li><strong>Spacebar:</strong> Hold to pan</li>
+				<li><strong>Ctrl+Space:</strong> Hold to zoom</li>
+				<li><strong>Arrow keys:</strong> Nudge selection (use Shift for larger moves)</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>🖱️ <strong>Pro Tip:</strong> Use Scroll Wheel</h3>
+				<p>Scroll wheel adjusts brush size. Hold <span class="shortcut-badge">Alt</span> + scroll to adjust opacity.</p>
+			</div>
+
+			<h2>Hack #10: Export Shortcuts</h2>
+			<p>Export your work quickly:</p>
+			<ul>
+				<li><strong>Ctrl+Shift+E:</strong> Quick Export</li>
+				<li><strong>Ctrl+E:</strong> Export as</li>
+				<li>Use presets for common formats</li>
+				<li>Save presets for future use</li>
+			</ul>
+
+			<div class="hack-card">
+				<h3>📤 <strong>Pro Tip:</strong> Create Export Presets</h3>
+				<p>Save your favorite export settings as presets for consistent output across projects.</p>
+			</div>
+
+			<h2>Practice Challenge</h2>
+			<p>Try combining these hacks in a single project:</p>
+			<ol>
+				<li>Open an image</li>
+				<li>Use keyboard shortcuts to apply filters</li>
+				<li>Group layers and add text</li>
+				<li>Export using your custom preset</li>
+			</ol>
+
+			<p><a href="blogs.html" class="back-link">← Back to Blog</a></p>
+		</div>
+	</div>
+
+	<footer>
+		<div class="footer-links">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="contact.html">Contact</a>
+			<a href="help.html">Help</a>
+			<a href="privacy.html">Privacy Policy</a>
+			<a href="blogs.html">Blogs</a>
+		</div>
+		<p>&copy; 2026 Img-PS. Free Online Image Editor.</p>
+	</footer>
+
+	<script>
+		const hamburger = document.getElementById('hamburger');
+		const navMenu = document.getElementById('navMenu');
+
+		hamburger.addEventListener('click', () => {
+			navMenu.classList.toggle('active');
+		});
+
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+			});
+		});
+	</script>
+</body>
+
+</html>
